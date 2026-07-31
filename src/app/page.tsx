@@ -82,7 +82,7 @@ const homepageServices = [
   {
     id: 1,
     title: "Permanent Recruitment",
-    description: "End-to-end hiring support, including candidate sourcing, screening, interview coordination, salary negotiation and joining follow-up.",
+    description: "Comprehensive end-to-end hiring solutions covering candidate sourcing from our extensive talent database, multi-stage screening and shortlisting, structured interview coordination, offer and salary negotiation, along with pre-joining engagement and follow-up to ensure smooth onboarding of the right talent.",
     icon: <IconUsers className="w-5 h-5" />,
     image: "/providing-services.jpg",
     reverse: false,
@@ -90,7 +90,7 @@ const homepageServices = [
   {
     id: 2,
     title: "Executive Search",
-    description: "Specialised recruitment for senior management, leadership and business-critical positions.",
+    description: "Tailored executive-level recruitment for senior management, C-suite leadership, and business-critical positions. We leverage our deep industry networks, confidential search methodologies, and rigorous evaluation frameworks to identify and secure high-impact leaders who drive organisational growth and strategic transformation.",
     icon: <IconBriefcase className="w-5 h-5" />,
     image: "/contractual-services.jpg",
     reverse: true,
@@ -98,7 +98,7 @@ const homepageServices = [
   {
     id: 3,
     title: "RPO Services",
-    description: "Dedicated recruitment process outsourcing support for companies that want to outsource part or all of their hiring process.",
+    description: "Dedicated Recruitment Process Outsourcing (RPO) for organisations seeking to outsource part or all of their hiring function. From building employer branding and managing job portals to sourcing, screening, and interview scheduling — we become an extension of your HR team, delivering measurable cost and time efficiencies.",
     icon: <IconGlobe className="w-5 h-5" />,
     image: "/recruitment-solutions.jpg",
     reverse: false,
@@ -106,7 +106,7 @@ const homepageServices = [
   {
     id: 4,
     title: "Startup HR Setup",
-    description: "Complete HR setup for startups and small businesses, including employee documentation, processes, templates and basic HR systems.",
+    description: "End-to-end HR infrastructure setup for startups and small businesses, including drafting employee handbooks, designing onboarding workflows, creating HR policy templates, setting up attendance and leave systems, and implementing foundational HR processes that scale with your growing team.",
     icon: <IconBuildingSkyscraper className="w-5 h-5" />,
     image: "/hr-consulting.jpg",
     reverse: true,
@@ -114,7 +114,7 @@ const homepageServices = [
   {
     id: 5,
     title: "HR Operations Outsourcing",
-    description: "Day-to-day HR support covering employee records, onboarding, attendance, probation, confirmations, employee queries and exit documentation.",
+    description: "Day-to-day HR operations management covering employee database maintenance, onboarding and exit formalities, attendance and leave tracking, probation reviews and confirmations, grievance handling, employee query resolution, and full exit documentation — freeing your internal team to focus on strategic priorities.",
     icon: <IconFileCheck className="w-5 h-5" />,
     image: "/hr-operations.jpg",
     reverse: false,
@@ -122,7 +122,7 @@ const homepageServices = [
   {
     id: 6,
     title: "HR Policies & Documentation",
-    description: "Development and customisation of employee handbooks, HR policies, standard operating procedures, letters and workplace guidelines.",
+    description: "Custom development and professional customisation of comprehensive employee handbooks, HR policy frameworks, standard operating procedures, appointment letters, increment templates, and workplace guidelines — ensuring full legal compliance and a consistent, well-documented employee experience.",
     icon: <IconFileText className="w-5 h-5" />,
     image: "/payroll-management.jpg",
     reverse: true,
