@@ -47,11 +47,12 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2012", event: "Prime Hire Minds Consulting founded to bridge the gap between talent and visionary companies." },
-  { year: "2015", event: "Established excellence in providing skilled professionals for permanent positions." },
-  { year: "2018", event: "Expanded to include executive search, RPO, and full-scale HR consulting services." },
-  { year: "2021", event: "Reached the milestone of 500+ corporate clients served across India." },
-  { year: "2024", event: "Recognized as a leading strategic HR consulting, career advisory, and internship partner." },
+  { year: "2012", event: "Prime Hire Minds Consulting founded with a vision to bridge the gap between exceptional talent and visionary companies across India." },
+  { year: "2015", event: "Established excellence in permanent recruitment, building deep talent pipelines across banking, IT, and healthcare sectors." },
+  { year: "2018", event: "Expanded services to include executive search, RPO solutions, and full-scale HR consulting for growing enterprises." },
+  { year: "2021", event: "Crossed the milestone of 500+ corporate clients served, strengthening our pan-India recruitment network." },
+  { year: "2024", event: "Recognized as a leading strategic HR consulting, career advisory, and internship partner across multiple industries." },
+  { year: "2026", event: "Empowering 1000+ enterprises with end-to-end workforce solutions, AI-driven talent matching, and pan-India internship programs." },
 ];
 
 const strengths = [
@@ -280,28 +281,116 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ════ TIMELINE ════ */}
+      {/* ════ OUR RECRUITMENT PROCESS ════ */}
       <section
-        className="py-16 md:py-24 relative overflow-hidden"
-        style={{ background: "linear-gradient(155deg, #1a4080 0%, #0B2C5F 50%, #071e42 100%)" }}
+        className="py-14 md:py-16 relative overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #faf8f4 0%, #f5f0e8 100%)" }}
       >
-        <div
-          className="absolute inset-0 opacity-[0.04] pointer-events-none"
-          style={{
-            backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)",
-            backgroundSize: "28px 28px",
-          }}
-        />
-        <div
-          className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{ background: "radial-gradient(circle, rgba(200,155,60,0.1), transparent 65%)" }}
-        />
-        <div
-          className="absolute top-0 left-0 right-0 h-[3px]"
-          style={{ background: "linear-gradient(to right, #C89B3C, #e8c97a 50%, #C89B3C)" }}
-        />
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(circle, rgba(11,44,95,0.8) 1px, transparent 1px)", backgroundSize: "32px 32px" }} />
+        <div className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.3), transparent)" }} />
 
         <div className="max-w-7xl mx-auto px-5 md:px-10 xl:px-16 relative z-10">
+          <SectionHeading
+            badge="How We Work"
+            title={<>Our Recruitment <span className="text-brand-secondary">Process</span></>}
+            subtitle="A structured, five-step approach to deliver the right talent — efficiently and reliably."
+            rule
+          />
+
+          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 mt-16 items-start">
+            {/* Left — Description */}
+            <div className="lg:sticky lg:top-32">
+              <p className="text-brand-dark/55 text-sm md:text-base leading-relaxed mb-6">
+                We follow a proven five-stage recruitment methodology designed to identify, evaluate, and onboard the right professionals for your organisation — reducing time-to-hire and improving retention.
+              </p>
+              <p className="text-brand-dark/55 text-sm md:text-base leading-relaxed mb-8">
+                From understanding your hiring needs to onboarding the final candidate, every step is driven by data, domain expertise, and a commitment to quality.
+              </p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-[2px] bg-brand-secondary" />
+                <span className="text-[11px] font-black uppercase tracking-[0.2em] text-brand-secondary">
+                  5-Stage Methodology
+                </span>
+              </div>
+            </div>
+
+            {/* Right — Steps */}
+            <div className="relative">
+              {/* Vertical connector */}
+              <div className="absolute left-[23px] top-8 bottom-8 w-px hidden md:block"
+                style={{ background: "linear-gradient(to bottom, rgba(200,155,60,0.1), rgba(200,155,60,0.4), rgba(200,155,60,0.1))" }} />
+
+              <div className="space-y-10 md:space-y-12">
+                {[
+                  {
+                    step: "01",
+                    title: "Discover",
+                    desc: "Deep-dive into your hiring needs, company culture, team dynamics, and role-specific requirements through structured consultations.",
+                  },
+                  {
+                    step: "02",
+                    title: "Source",
+                    desc: "Multi-channel talent sourcing across our pan-India network, job portals, referrals, and passive candidate databases.",
+                  },
+                  {
+                    step: "03",
+                    title: "Evaluate",
+                    desc: "Rigorous screening, technical assessments, behavioural interviews, and cultural fit evaluation for every shortlisted candidate.",
+                  },
+                  {
+                    step: "04",
+                    title: "Present",
+                    desc: "Curated shortlists with detailed candidate profiles, assessment reports, and recommendation notes for informed decision-making.",
+                  },
+                  {
+                    step: "05",
+                    title: "Onboard",
+                    desc: "Offer negotiation support, joining follow-up, and post-placement check-ins to ensure smooth integration and long-term retention.",
+                  },
+                ].map(({ step, title, desc }) => (
+                  <div key={step} className="flex gap-5 md:gap-8 group">
+                    {/* Step number */}
+                    <div className="flex flex-col items-center flex-shrink-0 relative z-10">
+                      <div className="w-12 h-12 flex items-center justify-center font-serif font-bold text-sm transition-all duration-300 group-hover:scale-110"
+                        style={{ background: "linear-gradient(135deg, #0B2C5F 0%, #1a4080 100%)", color: "#C89B3C" }}>
+                        {step}
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="pt-1 flex-1 min-w-0">
+                      <h4 className="font-serif text-lg md:text-xl font-bold text-brand-dark mb-2 group-hover:text-brand-primary transition-colors">
+                        {title}
+                      </h4>
+                      <p className="text-brand-dark/50 text-sm leading-relaxed">
+                        {desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════ TIMELINE ════ */}
+      <section
+        className="py-14 md:py-16 relative overflow-hidden"
+        style={{ background: "linear-gradient(155deg, #1a4080 0%, #0B2C5F 50%, #071e42 100%)" }}
+      >
+        <div className="absolute inset-0 opacity-[0.04] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px)", backgroundSize: "28px 28px" }} />
+        <div className="absolute -top-40 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(200,155,60,0.1), transparent 65%)" }} />
+        <div className="absolute -bottom-40 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(circle, rgba(200,155,60,0.06), transparent 65%)" }} />
+        <div className="absolute top-0 left-0 right-0 h-[3px]"
+          style={{ background: "linear-gradient(to right, #C89B3C, #e8c97a 50%, #C89B3C)" }} />
+
+        <div className="max-w-6xl mx-auto px-5 md:px-10 xl:px-16 relative z-10">
           <SectionHeading
             badge="Our Journey"
             title={<>Key <span className="text-brand-secondary">Milestones</span></>}
@@ -310,44 +399,68 @@ export default function AboutPage() {
             rule
           />
 
-          {/* Timeline grid — 2 col on md+ */}
-          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-x-14 gap-y-0">
-            {milestones.map(({ year, event }) => (
-              <div
-                key={year}
-                className="flex gap-5 group pb-8 md:pb-10 relative"
-              >
-                {/* Vertical connector line */}
-                <div className="flex flex-col items-center flex-shrink-0">
-                  {/* Year badge */}
-                  <div
-                    className="w-14 h-14 flex items-center justify-center font-serif font-bold text-sm flex-shrink-0 transition-all duration-300 group-hover:bg-brand-secondary"
-                    style={{
-                      background: "rgba(200,155,60,0.12)",
-                      border: "1px solid rgba(200,155,60,0.28)",
-                      color: "#C89B3C",
-                    }}
-                  >
-                    <span className="group-hover:text-white transition-colors duration-300">{year}</span>
-                  </div>
-                  {/* Line below badge — only if not last in column */}
-                  <div
-                    className="w-px flex-1 mt-2"
-                    style={{
-                      background: "rgba(200,155,60,0.15)",
-                      minHeight: "1.5rem",
-                    }}
-                  />
-                </div>
+          {/* Timeline — vertical center line on mobile, alternating on desktop */}
+          <div className="relative mt-16 md:mt-20">
+            {/* Center vertical line */}
+            <div className="absolute left-[27px] md:left-1/2 top-0 bottom-0 w-px md:-translate-x-px"
+              style={{ background: "linear-gradient(to bottom, rgba(200,155,60,0.1), rgba(200,155,60,0.4) 50%, rgba(200,155,60,0.1))" }} />
 
-                {/* Event text */}
-                <div className="pt-3.5 flex-1 min-w-0">
-                  <p className="text-white/55 text-sm md:text-[0.95rem] leading-relaxed group-hover:text-white/80 transition-colors duration-200">
-                    {event}
-                  </p>
-                </div>
-              </div>
-            ))}
+            <div className="space-y-12 md:space-y-0">
+              {milestones.map(({ year, event }, index) => {
+                const isLeft = index % 2 === 0;
+                return (
+                  <div key={year} className="relative md:flex md:items-center md:min-h-[140px]">
+                    {/* Mobile layout */}
+                    <div className="flex gap-5 md:hidden">
+                      <div className="flex flex-col items-center flex-shrink-0 relative z-10">
+                        <div className="w-14 h-14 flex items-center justify-center font-serif font-bold text-sm transition-all duration-300"
+                          style={{ background: "rgba(200,155,60,0.15)", border: "2px solid rgba(200,155,60,0.4)", color: "#C89B3C" }}>
+                          {year}
+                        </div>
+                        <div className="w-px flex-1 mt-2" style={{ background: "rgba(200,155,60,0.2)", minHeight: "2rem" }} />
+                      </div>
+                      <div className="pt-2.5 pb-6 flex-1 min-w-0">
+                        <p className="text-white/60 text-sm leading-relaxed">{event}</p>
+                      </div>
+                    </div>
+
+                    {/* Desktop layout — alternating */}
+                    <div className="hidden md:flex md:items-center w-full">
+                      {/* Left content */}
+                      <div className={`flex-1 ${isLeft ? "pr-16 text-right" : ""}`}>
+                        {isLeft && (
+                          <div className="group">
+                            <div className="inline-block px-5 py-3 mb-3 transition-all duration-300 group-hover:bg-brand-secondary/20"
+                              style={{ background: "rgba(200,155,60,0.08)", border: "1px solid rgba(200,155,60,0.2)" }}>
+                              <span className="font-serif font-bold text-brand-secondary text-lg">{year}</span>
+                            </div>
+                            <p className="text-white/60 text-[0.95rem] leading-relaxed group-hover:text-white/80 transition-colors">{event}</p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Center dot */}
+                      <div className="relative z-10 flex-shrink-0">
+                        <div className="w-4 h-4 rounded-full border-2 border-brand-secondary bg-[#0B2C5F] transition-all duration-300 hover:scale-125 hover:bg-brand-secondary" />
+                      </div>
+
+                      {/* Right content */}
+                      <div className={`flex-1 ${!isLeft ? "pl-16" : ""}`}>
+                        {!isLeft && (
+                          <div className="group">
+                            <div className="inline-block px-5 py-3 mb-3 transition-all duration-300 group-hover:bg-brand-secondary/20"
+                              style={{ background: "rgba(200,155,60,0.08)", border: "1px solid rgba(200,155,60,0.2)" }}>
+                              <span className="font-serif font-bold text-brand-secondary text-lg">{year}</span>
+                            </div>
+                            <p className="text-white/60 text-[0.95rem] leading-relaxed group-hover:text-white/80 transition-colors">{event}</p>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
