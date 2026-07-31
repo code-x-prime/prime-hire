@@ -57,18 +57,18 @@ export default function FAQSection({
   ];
 
   return (
-    <section className={cn("py-16 md:py-24 bg-white relative overflow-hidden", className)}>
+    <section className={cn("py-16 md:py-24 bg-white relative", className)}>
       {/* Decorative top line */}
       <div className="absolute top-0 left-0 right-0 h-px pointer-events-none"
         style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.3), transparent)" }} />
 
-      <div className="max-w-7xl mx-auto px-4 md:px-8 xl:px-16 relative z-10">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 xl:px-16 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
           <span className="inline-block text-[11px] font-black uppercase tracking-[0.14em] text-brand-secondary mb-3">
             Clear Answers
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.5rem] font-bold text-brand-dark mb-4">
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-brand-dark mb-3 md:mb-4">
             {title}
           </h2>
           <p className="text-brand-dark/55 text-sm md:text-base">
@@ -76,27 +76,27 @@ export default function FAQSection({
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[320px_1fr] gap-6 lg:gap-12">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-6 lg:gap-10">
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-5">
             {/* Mobile category scroll */}
             <div className="lg:hidden">
-              <div className="flex overflow-x-auto hide-scrollbar gap-2 pb-2 -mx-4 px-4">
+              <div className="flex overflow-x-auto hide-scrollbar gap-2 pb-2">
                 {categoryCounts.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
                     className={cn(
-                      "flex-shrink-0 flex items-center gap-2 px-4 py-2.5 text-[11px] font-black uppercase tracking-wider border transition-all duration-200 rounded-sm",
+                      "flex-shrink-0 flex items-center gap-1.5 px-3 py-2 text-[10px] font-black uppercase tracking-wider border transition-all duration-200 rounded-sm",
                       activeCategory === cat.id
                         ? "bg-brand-primary text-white border-brand-primary"
                         : "bg-white text-brand-dark/60 border-brand-accent/60 hover:border-brand-secondary"
                     )}
                   >
-                    {cat.icon && <span className="w-3.5 h-3.5">{cat.icon}</span>}
+                    {cat.icon && <span className="w-3 h-3">{cat.icon}</span>}
                     <span>{cat.label}</span>
                     <span className={cn(
-                      "text-[9px] px-1.5 py-0.5 rounded-full",
+                      "text-[8px] px-1 py-0.5 rounded-full",
                       activeCategory === cat.id ? "bg-white/20" : "bg-brand-light"
                     )}>
                       {cat.count}
@@ -153,14 +153,14 @@ export default function FAQSection({
 
             {/* Contact CTA card */}
             {contactCta && (
-              <div className="bg-brand-primary p-6 text-white relative overflow-hidden">
+              <div className="bg-brand-primary p-5 md:p-6 text-white relative overflow-hidden rounded-sm">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-secondary/10 rounded-full blur-2xl pointer-events-none" />
                 <div className="relative z-10">
-                  <div className="w-10 h-10 bg-brand-secondary/20 flex items-center justify-center mb-4">
+                  <div className="w-10 h-10 bg-brand-secondary/20 flex items-center justify-center mb-3">
                     <IconHeadphones className="w-5 h-5 text-brand-secondary" />
                   </div>
-                  <h4 className="font-serif text-lg font-bold mb-2">{contactCta.title}</h4>
-                  <p className="text-white/60 text-xs leading-relaxed mb-5">{contactCta.description}</p>
+                  <h4 className="font-serif text-base md:text-lg font-bold mb-2">{contactCta.title}</h4>
+                  <p className="text-white/60 text-xs leading-relaxed mb-4">{contactCta.description}</p>
                   <a
                     href={contactCta.href}
                     className="inline-flex items-center gap-2 bg-brand-secondary hover:bg-brand-secondary/90 text-white px-4 py-2.5 text-[11px] font-black uppercase tracking-wider transition-all duration-200 group"
@@ -251,7 +251,7 @@ function FAQAccordionItem({
         </span>
 
         <span className={cn(
-          "flex-1 font-serif text-sm md:text-base lg:text-lg font-bold leading-snug transition-colors duration-200",
+          "flex-1 font-serif text-[13px] md:text-base lg:text-lg font-bold leading-snug transition-colors duration-200 break-words",
           isOpen ? "text-brand-primary" : "text-brand-dark group-hover:text-brand-primary"
         )}>
           {question}
