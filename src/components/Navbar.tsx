@@ -234,6 +234,71 @@ export default function Navbar() {
                       isServicesActive ? "scale-x-100 opacity-100" : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-50"
                     )} />
                   </button>
+
+                  {/* Mega Menu — positioned under Services */}
+                  <div className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+                    <AnimatePresence>
+                      {servicesOpen && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="pointer-events-auto"
+                        >
+                          <div className="pt-3 px-4">
+                            <div className="bg-white shadow-[0_24px_60px_-12px_rgba(11,44,95,0.22)] border border-brand-accent/60 w-[min(92vw,720px)] p-5 sm:p-6 grid grid-cols-2 gap-5 sm:gap-6">
+                              {serviceDropdown.map((section) => {
+                                const SectionIcon = section.icon;
+                                return (
+                                  <div key={section.category}>
+                                    <Link
+                                      href={section.href}
+                                      className="flex items-center gap-2 mb-3 group"
+                                      onClick={() => setServicesOpen(false)}
+                                    >
+                                      <div className="w-8 h-8 flex items-center justify-center bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
+                                        <SectionIcon className="w-4 h-4" />
+                                      </div>
+                                      <span className="text-xs font-black uppercase tracking-[0.12em] text-brand-primary group-hover:text-brand-secondary transition-colors">
+                                        {section.category}
+                                      </span>
+                                    </Link>
+                                    <ul className="space-y-1">
+                                      {section.items.map((item) => (
+                                        <li key={item.name}>
+                                          <Link
+                                            href={item.href}
+                                            onClick={() => setServicesOpen(false)}
+                                            className="text-[11px] font-bold text-brand-dark/60 hover:text-brand-primary transition-colors flex items-center gap-1.5 py-1"
+                                          >
+                                            <span className="w-1 h-px bg-brand-secondary/60" />
+                                            {item.name}
+                                          </Link>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                );
+                              })}
+                              <div className="col-span-2 mt-2 pt-3 border-t border-brand-accent/60 flex items-center justify-between">
+                                <span className="text-[10px] font-black uppercase tracking-[0.12em] text-brand-dark/40">
+                                  15+ corporate B2B services
+                                </span>
+                                <Link
+                                  href="/services"
+                                  onClick={() => setServicesOpen(false)}
+                                  className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.1em] text-brand-primary hover:text-brand-secondary transition-colors"
+                                >
+                                  View All Services <IconArrowRight className="w-3 h-3" />
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 </div>
 
                 {/* Right Links */}
@@ -308,71 +373,6 @@ export default function Navbar() {
                 </button>
               </div>
             </div>
-
-            {/* ── Centered Services Mega Menu (desktop only) ── */}
-            <AnimatePresence>
-              {servicesOpen && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.2 }}
-                  className="hidden md:block absolute top-full left-1/2 -translate-x-1/2 z-50"
-                  onMouseEnter={openServices}
-                  onMouseLeave={closeServices}
-                >
-                  <div className="pt-3 px-4">
-                    <div className="bg-white shadow-[0_24px_60px_-12px_rgba(11,44,95,0.22)] border border-brand-accent/60 w-[min(92vw,720px)] p-5 sm:p-6 grid grid-cols-2 gap-5 sm:gap-6">
-                      {serviceDropdown.map((section) => {
-                        const SectionIcon = section.icon;
-                        return (
-                          <div key={section.category}>
-                            <Link
-                              href={section.href}
-                              className="flex items-center gap-2 mb-3 group"
-                              onClick={() => setServicesOpen(false)}
-                            >
-                              <div className="w-8 h-8 flex items-center justify-center bg-brand-primary/5 text-brand-primary group-hover:bg-brand-primary group-hover:text-white transition-colors">
-                                <SectionIcon className="w-4 h-4" />
-                              </div>
-                              <span className="text-xs font-black uppercase tracking-[0.12em] text-brand-primary group-hover:text-brand-secondary transition-colors">
-                                {section.category}
-                              </span>
-                            </Link>
-                            <ul className="space-y-1">
-                              {section.items.map((item) => (
-                                <li key={item.name}>
-                                  <Link
-                                    href={item.href}
-                                    onClick={() => setServicesOpen(false)}
-                                    className="text-[11px] font-bold text-brand-dark/60 hover:text-brand-primary transition-colors flex items-center gap-1.5 py-1"
-                                  >
-                                    <span className="w-1 h-px bg-brand-secondary/60" />
-                                    {item.name}
-                                  </Link>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        );
-                      })}
-                      <div className="col-span-2 mt-2 pt-3 border-t border-brand-accent/60 flex items-center justify-between">
-                        <span className="text-[10px] font-black uppercase tracking-[0.12em] text-brand-dark/40">
-                          15+ corporate B2B services
-                        </span>
-                        <Link
-                          href="/services"
-                          onClick={() => setServicesOpen(false)}
-                          className="inline-flex items-center gap-1.5 text-[11px] font-black uppercase tracking-[0.1em] text-brand-primary hover:text-brand-secondary transition-colors"
-                        >
-                          View All Services <IconArrowRight className="w-3 h-3" />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </motion.header>
