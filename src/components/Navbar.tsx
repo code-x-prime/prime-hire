@@ -24,10 +24,13 @@ import {
 } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
+const navLinksLeft = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Industries", href: "/industries" },
+];
+
+const navLinksRight = [
   { name: "Career Services", href: "/career-services" },
   { name: "Internships", href: "/internships" },
   { name: "Contact", href: "/contact" },
@@ -183,9 +186,10 @@ export default function Navbar() {
                 </div>
               </Link>
 
-              {/* DESKTOP NAV — centred */}
-              <nav className="hidden md:flex items-center absolute left-1/2 -translate-x-1/2 gap-0.5">
-                {navLinks.map((link) => {
+              {/* DESKTOP NAV — centred with Services in middle */}
+              <nav className="hidden md:flex items-center gap-0.5">
+                {/* Left Links */}
+                {navLinksLeft.map((link) => {
                   const active = pathname === link.href;
                   return (
                     <Link
@@ -211,7 +215,7 @@ export default function Navbar() {
                   );
                 })}
 
-                {/* Services Dropdown Trigger */}
+                {/* Services Dropdown Trigger — CENTER */}
                 <div
                   className="relative px-4 lg:px-5 py-6"
                   onMouseEnter={openServices}
@@ -231,6 +235,33 @@ export default function Navbar() {
                     )} />
                   </button>
                 </div>
+
+                {/* Right Links */}
+                {navLinksRight.map((link) => {
+                  const active = pathname === link.href;
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      className={cn(
+                        "relative px-4 lg:px-5 py-6 text-[13px] font-black tracking-[0.06em] uppercase transition-colors duration-200 group whitespace-nowrap",
+                        active
+                          ? "text-brand-secondary"
+                          : "text-brand-dark/55 hover:text-brand-primary"
+                      )}
+                    >
+                      <span className="relative">{link.name}</span>
+
+                      {/* Active / hover underline */}
+                      <span className={cn(
+                        "absolute bottom-3 left-4 right-4 h-[2px] bg-brand-secondary origin-left transition-all duration-300",
+                        active
+                          ? "scale-x-100 opacity-100"
+                          : "scale-x-0 opacity-0 group-hover:scale-x-100 group-hover:opacity-50"
+                      )} />
+                    </Link>
+                  );
+                })}
               </nav>
 
               {/* CTA + MOBILE TOGGLE */}
@@ -387,7 +418,7 @@ export default function Navbar() {
 
               {/* Links */}
               <nav className="flex-1 px-4 pt-3 overflow-y-auto">
-                {navLinks.map((link, i) => {
+                {[...navLinksLeft, ...navLinksRight].map((link, i) => {
                   const active = pathname === link.href;
                   return (
                     <motion.div
@@ -420,7 +451,7 @@ export default function Navbar() {
                 <motion.div
                   initial={{ opacity: 0, x: 14 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: navLinks.length * 0.05 + 0.06, duration: 0.22 }}
+                  transition={{ delay: (navLinksLeft.length + navLinksRight.length) * 0.05 + 0.06, duration: 0.22 }}
                   className="border-l-2 border-transparent"
                 >
                   <button
