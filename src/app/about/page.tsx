@@ -211,27 +211,31 @@ export default function AboutPage() {
 
       {/* ════ FULL-WIDTH PULL QUOTE ════ */}
       <section
-        className="relative overflow-hidden py-20 md:py-28"
-        style={{ background: "#F8FAFC" }}
+        className="relative overflow-hidden py-24 md:py-32"
+        style={{ background: "linear-gradient(180deg, #F8FAFC 0%, #f0f4f8 100%)" }}
       >
-        <div
-          className="absolute top-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.25), transparent)" }}
-        />
-        <div
-          className="absolute bottom-0 left-0 right-0 h-px"
-          style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.25), transparent)" }}
-        />
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.3), transparent)" }} />
+        <div className="absolute bottom-0 left-0 right-0 h-px"
+          style={{ background: "linear-gradient(to right, transparent, rgba(200,155,60,0.3), transparent)" }} />
+        <div className="absolute top-20 left-10 w-64 h-64 rounded-full pointer-events-none opacity-30"
+          style={{ background: "radial-gradient(circle, rgba(200,155,60,0.15), transparent 70%)" }} />
+        <div className="absolute bottom-20 right-10 w-48 h-48 rounded-full pointer-events-none opacity-30"
+          style={{ background: "radial-gradient(circle, rgba(11,44,95,0.1), transparent 70%)" }} />
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none"
+          style={{ backgroundImage: "radial-gradient(circle, rgba(11,44,95,0.8) 1px, transparent 1px)", backgroundSize: "40px 40px" }} />
 
-        <div className="max-w-4xl mx-auto px-5 md:px-10 relative z-10 text-center">
+        <div className="max-w-5xl mx-auto px-5 md:px-10 relative z-10 text-center">
 
           {/* Big decorative quote mark */}
           <div
-            className="font-serif leading-none select-none mb-6 mx-auto"
+            className="leading-none select-none mb-8 mx-auto"
             style={{
-              fontSize: "clamp(5rem, 12vw, 9rem)",
-              color: "rgba(200,155,60,0.15)",
-              fontFamily: "Georgia, serif",
+              fontSize: "clamp(4rem, 10vw, 7rem)",
+              background: "linear-gradient(135deg, #C89B3C 0%, #e8c97a 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
               lineHeight: 0.8,
             }}
             aria-hidden
@@ -240,7 +244,7 @@ export default function AboutPage() {
           </div>
 
           <blockquote
-            className="font-serif text-xl md:text-2xl lg:text-3xl text-brand-dark leading-[1.5] tracking-tight mb-10"
+            className="font-serif text-2xl md:text-3xl lg:text-[2.1rem] text-brand-dark leading-[1.6] tracking-tight mb-12 max-w-4xl mx-auto"
             style={{ fontStyle: "italic" }}
           >
             Prime Hire Minds Consulting has been instrumental in building our team with exceptional talent.
@@ -248,19 +252,29 @@ export default function AboutPage() {
           </blockquote>
 
           {/* Stars */}
-          <div className="flex items-center gap-1 justify-center mb-6">
+          <div className="flex items-center gap-1.5 justify-center mb-8">
             {Array.from({ length: 5 }).map((_, i) => (
-              <svg key={i} viewBox="0 0 16 16" className="w-4 h-4" style={{ fill: "#C89B3C" }}>
-                <path d="M8 1l1.85 3.75L14 5.5l-3 2.92.71 4.13L8 10.35l-3.71 2.2.71-4.13L2 5.5l4.15-.75L8 1z" />
+              <svg key={i} viewBox="0 0 20 20" className="w-5 h-5" style={{ fill: "#C89B3C" }}>
+                <path d="M10 1l2.39 4.84L18 6.71l-4 3.9.94 5.5L10 13.48l-4.94 2.63.94-5.5-4-3.9 5.61-.87L10 1z" />
               </svg>
             ))}
           </div>
 
-          <div className="flex flex-col items-center gap-1">
-            <div className="w-8 h-[2px] bg-brand-secondary mb-4" />
-            <div className="font-serif font-bold text-brand-dark text-lg">Priya Singh</div>
-            <div className="text-[10px] font-black text-brand-secondary uppercase tracking-[0.22em]">
-              HR Director · Corporate Partner
+          <div className="flex flex-col items-center gap-3">
+            {/* Avatar */}
+            <div className="w-16 h-16 rounded-full border-2 border-brand-secondary/30 overflow-hidden mb-2"
+              style={{ background: "linear-gradient(135deg, #0B2C5F 0%, #1a4080 100%)" }}>
+              <div className="w-full h-full flex items-center justify-center text-white font-serif font-bold text-xl">
+                AR
+              </div>
+            </div>
+            <div className="w-10 h-[2px] bg-brand-secondary" />
+            <div className="font-serif font-bold text-brand-dark text-xl">Ananya Reddy</div>
+            <div className="text-[11px] font-black text-brand-secondary uppercase tracking-[0.2em]">
+              Vice President · Talent Acquisition
+            </div>
+            <div className="text-[10px] text-brand-dark/40 font-medium tracking-wide">
+              TechNova Solutions Pvt. Ltd.
             </div>
           </div>
         </div>

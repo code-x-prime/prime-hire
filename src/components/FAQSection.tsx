@@ -76,27 +76,27 @@ export default function FAQSection({
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-[320px_1fr] gap-8 lg:gap-12">
+        <div className="grid lg:grid-cols-[320px_1fr] gap-6 lg:gap-12">
           {/* Sidebar */}
           <div className="space-y-6">
-            {/* Mobile category dropdown / scroll */}
+            {/* Mobile category scroll */}
             <div className="lg:hidden">
-              <div className="flex overflow-x-auto hide-scrollbar gap-2 pb-2">
+              <div className="flex overflow-x-auto hide-scrollbar gap-2 pb-2 -mx-4 px-4">
                 {categoryCounts.map((cat) => (
                   <button
                     key={cat.id}
                     onClick={() => setActiveCategory(cat.id)}
                     className={cn(
-                      "flex-shrink-0 flex items-center gap-2 px-4 py-2.5 text-xs font-black uppercase tracking-wider border transition-all duration-200",
+                      "flex-shrink-0 flex items-center gap-2 px-4 py-2.5 text-[11px] font-black uppercase tracking-wider border transition-all duration-200 rounded-sm",
                       activeCategory === cat.id
                         ? "bg-brand-primary text-white border-brand-primary"
                         : "bg-white text-brand-dark/60 border-brand-accent/60 hover:border-brand-secondary"
                     )}
                   >
-                    {cat.icon && <span className="w-4 h-4">{cat.icon}</span>}
+                    {cat.icon && <span className="w-3.5 h-3.5">{cat.icon}</span>}
                     <span>{cat.label}</span>
                     <span className={cn(
-                      "ml-1 text-[10px] px-1.5 py-0.5 rounded-full",
+                      "text-[9px] px-1.5 py-0.5 rounded-full",
                       activeCategory === cat.id ? "bg-white/20" : "bg-brand-light"
                     )}>
                       {cat.count}
@@ -175,11 +175,11 @@ export default function FAQSection({
 
           {/* FAQ Accordion */}
           <div className="bg-white border border-brand-accent/60">
-            <div className="px-5 md:px-8 py-4 border-b border-brand-accent/60 bg-[#F8FAFC]">
-              <h3 className="text-sm font-black uppercase tracking-wider text-brand-dark">
+            <div className="px-4 md:px-8 py-3 md:py-4 border-b border-brand-accent/60 bg-[#F8FAFC]">
+              <h3 className="text-xs md:text-sm font-black uppercase tracking-wider text-brand-dark">
                 {categoryCounts.find((c) => c.id === activeCategory)?.label}
               </h3>
-              <p className="text-[11px] text-brand-dark/40 mt-0.5">
+              <p className="text-[10px] md:text-[11px] text-brand-dark/40 mt-0.5">
                 {filteredFaqs.length} {filteredFaqs.length === 1 ? "question" : "questions"} answered
               </p>
             </div>
@@ -202,7 +202,7 @@ export default function FAQSection({
                       />
                     ))
                   ) : (
-                    <div className="p-8 text-center text-brand-dark/40 text-sm">
+                    <div className="p-6 md:p-8 text-center text-brand-dark/40 text-xs md:text-sm">
                       No questions available in this category yet.
                     </div>
                   )}
@@ -241,10 +241,10 @@ function FAQAccordionItem({
     <div className="border-b border-brand-accent/60 last:border-b-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center gap-4 md:gap-5 px-5 md:px-8 py-5 md:py-6 text-left focus:outline-none group"
+        className="w-full flex items-start gap-3 md:gap-5 px-4 md:px-8 py-4 md:py-6 text-left focus:outline-none group"
       >
         <span className={cn(
-          "flex-shrink-0 font-serif text-[0.7rem] font-black tracking-widest w-6 md:w-7 transition-colors duration-300",
+          "flex-shrink-0 font-serif text-[0.65rem] md:text-[0.7rem] font-black tracking-widest w-5 md:w-7 pt-0.5 transition-colors duration-300",
           isOpen ? "text-brand-secondary" : "text-brand-dark/20 group-hover:text-brand-dark/40"
         )}>
           {String(index + 1).padStart(2, "0")}
@@ -258,13 +258,13 @@ function FAQAccordionItem({
         </span>
 
         <span className={cn(
-          "flex-shrink-0 w-7 h-7 md:w-8 md:h-8 border flex items-center justify-center transition-all duration-300 ml-2",
+          "flex-shrink-0 w-6 h-6 md:w-8 md:h-8 border flex items-center justify-center transition-all duration-300 ml-2 mt-0.5",
           isOpen
             ? "border-brand-secondary bg-brand-secondary"
             : "border-brand-accent/70 group-hover:border-brand-primary/30"
         )}>
           <IconChevronDown className={cn(
-            "w-3.5 h-3.5 md:w-4 md:h-4 transition-transform duration-300",
+            "w-3 h-3 md:w-4 md:h-4 transition-transform duration-300",
             isOpen ? "rotate-180 text-white" : "text-brand-dark/40 group-hover:text-brand-primary"
           )} />
         </span>
@@ -280,8 +280,8 @@ function FAQAccordionItem({
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
             className="overflow-hidden"
           >
-            <div className="px-5 md:px-8 pb-5 md:pb-6">
-              <div className="pl-10 md:pl-12 border-l-2 border-brand-secondary/35">
+            <div className="px-4 md:px-8 pb-4 md:pb-6">
+              <div className="pl-8 md:pl-12 border-l-2 border-brand-secondary/35">
                 <p className="text-brand-dark/60 text-xs md:text-sm leading-relaxed">
                   {answer}
                 </p>
