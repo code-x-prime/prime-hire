@@ -64,7 +64,7 @@ export default function MinimalHero({
     let particles: Particle[] = [];
     let raf = 0;
 
-    const count = () => Math.max(25, Math.floor((canvas.width * canvas.height) / 8000));
+    const count = () => Math.max(18, Math.floor((canvas.width * canvas.height) / 12000));
 
     const make = (): Particle => {
       const fadeDelay = Math.random() * 600 + 100;

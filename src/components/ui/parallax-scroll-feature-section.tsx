@@ -72,16 +72,16 @@ function ParallaxServiceItem({
     offset: ["start end", "center start"],
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [0, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.55], [0, 1]);
   const clipPath = useTransform(
     scrollYProgress,
-    [0, 0.7],
+    [0, 0.55],
     service.reverse
       ? ["inset(0 0 0 100%)", "inset(0 0 0 0%)"]
       : ["inset(0 100% 0 0)", "inset(0 0% 0 0)"]
   );
-  const translateContent = useTransform(scrollYProgress, [0, 1], [60, 0]);
-  const translateImage = useTransform(scrollYProgress, [0, 1], [-40, 40]);
+  const translateContent = useTransform(scrollYProgress, [0, 0.8], [40, 0]);
+  const translateImage = useTransform(scrollYProgress, [0, 1], [-25, 25]);
 
   return (
     <div

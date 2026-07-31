@@ -205,7 +205,7 @@ const faqs = [
 export default function Home() {
   return (
     <>
-      <ElegantCarousel slides={heroSlides} />
+      <ElegantCarousel slides={heroSlides} interval={4500} />
 
       {/* ════ ABOUT PREVIEW ════ */}
       <AboutSection3 />
@@ -309,7 +309,7 @@ export default function Home() {
       </section>
 
       {/* ════ BENTO FEATURES ════ */}
-      <section className="py-14 md:py-20 lg:py-24 bg-[#fdfbf6] relative overflow-hidden">
+      <section className="py-14 md:py-16  bg-[#fdfbf6] relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 md:px-8 xl:px-16">
           <BentoFeatures
             badge="Our Approach"

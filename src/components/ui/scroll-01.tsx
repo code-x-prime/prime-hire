@@ -36,19 +36,19 @@ function ScrollItem({
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start 90%", "end 15%"],
+    offset: ["start 85%", "end 20%"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const y = useTransform(scrollYProgress, [0, 1], [16, -16]);
 
-  const opacityValues = index === 0 ? [1, 0.7, 1, 0] : [0, 0.7, 1, 0];
+  const opacityValues = index === 0 ? [1, 0.8, 1, 0] : [0, 0.8, 1, 0];
   const opacity = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.7, 1],
+    [0, 0.25, 0.65, 1],
     opacityValues,
   );
 
-  const isActive = useTransform(scrollYProgress, (v) => v > 0.4 && v < 0.6);
+  const isActive = useTransform(scrollYProgress, (v) => v > 0.35 && v < 0.65);
 
   useMotionValueEvent(isActive, "change", (v) => {
     if (v) {

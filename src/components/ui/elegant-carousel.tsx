@@ -42,7 +42,7 @@ export default function ElegantCarousel({
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
 
-  const TRANSITION_DURATION = 800;
+  const TRANSITION_DURATION = 450;
 
   const goToSlide = useCallback(
     (index: number, dir?: "next" | "prev") => {
@@ -124,7 +124,7 @@ export default function ElegantCarousel({
     >
       {/* Background accent wash */}
       <div
-        className="absolute inset-0 pointer-events-none transition-all duration-700"
+        className="absolute inset-0 pointer-events-none transition-all duration-300"
         style={{
           background: `radial-gradient(ellipse at 70% 50%, ${currentSlide.accent}18 0%, transparent 70%)`,
         }}
@@ -147,7 +147,7 @@ export default function ElegantCarousel({
               {/* Collection number */}
               <div
                 className={cn(
-                  "flex items-center gap-3 mb-5 md:mb-6 transition-all duration-500",
+                  "flex items-center gap-3 mb-5 md:mb-6 transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "opacity-0 -translate-x-6"
@@ -164,7 +164,7 @@ export default function ElegantCarousel({
               {/* Title */}
               <h2
                 className={cn(
-                  "font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.05] text-brand-dark mb-4 md:mb-5 transition-all duration-500",
+                  "font-serif text-4xl sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4rem] leading-[1.05] text-brand-dark mb-4 md:mb-5 transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "opacity-0 -translate-y-6"
@@ -178,7 +178,7 @@ export default function ElegantCarousel({
               {/* Subtitle */}
               <p
                 className={cn(
-                  "text-sm md:text-base font-black uppercase tracking-[0.18em] mb-5 md:mb-6 transition-all duration-500 delay-75",
+                  "text-sm md:text-base font-black uppercase tracking-[0.18em] mb-5 md:mb-6 transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "opacity-0 -translate-y-5"
@@ -193,7 +193,7 @@ export default function ElegantCarousel({
               {/* Description */}
               <p
                 className={cn(
-                  "text-sm md:text-base lg:text-lg text-brand-dark/60 leading-relaxed mb-8 md:mb-10 transition-all duration-500 delay-100",
+                  "text-sm md:text-base lg:text-lg text-brand-dark/60 leading-relaxed mb-8 md:mb-10 transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "opacity-0 -translate-y-5"
@@ -207,7 +207,7 @@ export default function ElegantCarousel({
               {/* CTA + Navigation Arrows */}
               <div
                 className={cn(
-                  "flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8 transition-all duration-500 delay-150",
+                  "flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-8 transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "opacity-0 -translate-y-5"
@@ -254,7 +254,7 @@ export default function ElegantCarousel({
               {/* Image frame */}
               <div
                 className={cn(
-                  "relative w-full h-full overflow-hidden transition-all duration-700",
+                  "relative w-full h-full overflow-hidden transition-all duration-300",
                   isTransitioning
                     ? direction === "next"
                       ? "scale-[0.96] opacity-80"
@@ -271,7 +271,7 @@ export default function ElegantCarousel({
                     initial={{ opacity: 0, scale: 1.05 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.98 }}
-                    transition={{ duration: 0.7, ease: "easeInOut" }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
                     className="absolute inset-0"
                   >
                     <Image

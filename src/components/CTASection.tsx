@@ -32,7 +32,7 @@ export default function CTASection({
   className,
 }: CTASectionProps) {
   return (
-    <section className={cn("py-14 md:py-20 lg:py-24 bg-white relative overflow-hidden", className)}>
+    <section className={cn("py-14 md:py-16  bg-white relative overflow-hidden", className)}>
       <div className="max-w-7xl mx-auto px-4 md:px-8 xl:px-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 32 }}

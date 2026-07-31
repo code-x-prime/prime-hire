@@ -13,13 +13,13 @@ export default function AboutSection3() {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        delay: i * 0.4,
-        duration: 0.5,
+        delay: i * 0.08,
+        duration: 0.35,
       },
     }),
     hidden: {
-      filter: "blur(10px)",
-      y: -20,
+      filter: "blur(8px)",
+      y: -12,
       opacity: 0,
     },
   };
@@ -28,12 +28,12 @@ export default function AboutSection3() {
       opacity: 1,
       filter: "blur(0px)",
       transition: {
-        delay: i * 0.4,
-        duration: 0.5,
+        delay: i * 0.08,
+        duration: 0.4,
       },
     }),
     hidden: {
-      filter: "blur(10px)",
+      filter: "blur(8px)",
       opacity: 0,
     },
   };
@@ -161,14 +161,14 @@ export default function AboutSection3() {
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl !leading-[110%] font-semibold text-brand-dark mb-6 md:mb-8">
               <VerticalCutReveal
                 splitBy="words"
-                staggerDuration={0.1}
+                staggerDuration={0.05}
                 staggerFrom="first"
                 reverse={true}
                 transition={{
                   type: "spring",
-                  stiffness: 250,
-                  damping: 30,
-                  delay: 0.5,
+                  stiffness: 320,
+                  damping: 22,
+                  delay: 0.15,
                 }}
               >
                 Strategic Recruitment & HR Consulting for Growing Enterprises.
