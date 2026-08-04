@@ -5,7 +5,6 @@ import CTASection from "@/components/CTASection";
 import MinimalHero from "@/components/MinimalHero";
 import {
   IconMapPin,
-  IconPhone,
   IconMail,
   IconClock,
   IconArrowRight,

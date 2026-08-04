@@ -3,7 +3,6 @@ import Image from "next/image";
 import {
   IconMail,
   IconMapPin,
-  IconPhone,
   IconArrowUpRight,
   IconUsers,
   IconBuildingSkyscraper,

@@ -16,7 +16,6 @@ import {
   IconX,
   IconMapPin,
   IconMail,
-  IconPhone,
   IconArrowRight,
   IconChevronDown,
   IconUsers,
