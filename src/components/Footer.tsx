@@ -197,26 +197,41 @@ export default function Footer() {
           </div>
 
           {/* Contact strip */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 border-y border-white/[0.08] py-10">
-            <a href="#" className="flex items-start gap-4 group text-white/70 hover:text-white transition-colors">
-              <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg border border-white/15 bg-white/[0.04] group-hover:border-brand-secondary/50 group-hover:bg-brand-secondary/10 transition-all duration-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-14 border-y border-white/[0.08] py-10">
+            <div className="flex items-start gap-4 text-white/70">
+              <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg border border-white/15 bg-white/[0.04] transition-all duration-200">
                 <IconMapPin className="w-4 h-4 text-brand-secondary" />
               </div>
-              <span className="text-sm leading-relaxed pt-1">
-                ***
+              <span className="text-xs leading-relaxed pt-1">
+                Unit No. 604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Uttar Pradesh 201305, India
               </span>
-            </a>
-            <a href="tel:#" className="flex items-center gap-4 group text-white/70 hover:text-white transition-colors">
+            </div>
+            <a href="mailto:hr@primehireminds.com" className="flex items-center gap-4 group text-white/70 hover:text-white transition-colors">
               <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg border border-white/15 bg-white/[0.04] group-hover:border-brand-secondary/50 group-hover:bg-brand-secondary/10 transition-all duration-200">
-                <IconPhone className="w-4 h-4 text-brand-secondary" />
+                <IconMail className="w-4 h-4 text-brand-secondary" />
               </div>
-              <span className="text-sm pt-3">***</span>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-secondary">HR & Careers</span>
+                <span className="text-xs pt-0.5 break-all">hr@primehireminds.com</span>
+              </div>
             </a>
             <a href="mailto:info@primehireminds.com" className="flex items-center gap-4 group text-white/70 hover:text-white transition-colors">
               <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg border border-white/15 bg-white/[0.04] group-hover:border-brand-secondary/50 group-hover:bg-brand-secondary/10 transition-all duration-200">
                 <IconMail className="w-4 h-4 text-brand-secondary" />
               </div>
-              <span className="text-sm pt-3 break-all">info@primehireminds.com</span>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-secondary">General Enquiries</span>
+                <span className="text-xs pt-0.5 break-all">info@primehireminds.com</span>
+              </div>
+            </a>
+            <a href="mailto:support@primehireminds.com" className="flex items-center gap-4 group text-white/70 hover:text-white transition-colors">
+              <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 rounded-lg border border-white/15 bg-white/[0.04] group-hover:border-brand-secondary/50 group-hover:bg-brand-secondary/10 transition-all duration-200">
+                <IconMail className="w-4 h-4 text-brand-secondary" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-brand-secondary">Client Support</span>
+                <span className="text-xs pt-0.5 break-all">support@primehireminds.com</span>
+              </div>
             </a>
           </div>
 

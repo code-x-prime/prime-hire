@@ -78,7 +78,7 @@ const aboutFaqs = [
   { category: "experience", question: "What is your placement success rate?", answer: "Our placement rate stands at 98.5%, supported by rigorous screening, cultural fit assessment, and structured onboarding processes." },
   { category: "approach", question: "What makes your approach different?", answer: "We take a consultative, strategic approach rather than transactional recruiting. Each engagement is led by domain-specialised consultants who understand your industry and hiring context." },
   { category: "approach", question: "Do you follow compliance standards?", answer: "Yes. Statutory compliance, data privacy, and ethical hiring practices are fundamental to our operations. We align with industry-standard verification and documentation processes." },
-  { category: "coverage", question: "Do you operate outside your office location?", answer: "Absolutely. While our corporate office is located in ***, we provide pan-India recruitment and HR consulting services across all major cities and industrial corridors." },
+  { category: "coverage", question: "Do you operate outside your office location?", answer: "Absolutely. While our corporate office is located in Bhutani Alphathum, Sector 90, Noida, Uttar Pradesh, we provide pan-India recruitment and HR consulting services across all major cities and industrial corridors." },
   { category: "coverage", question: "Which industries do you specialise in?", answer: "We cover Banking & Finance, IT & Technology, Healthcare, Manufacturing, Aviation, Retail, Logistics, Construction, and several other specialised sectors." },
 ];
 

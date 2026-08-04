@@ -120,21 +120,25 @@ export default function Navbar() {
               style={{ background: "linear-gradient(to right, transparent, #C89B3C 30%, #C89B3C 70%, transparent)" }} />
 
             <div className="max-w-7xl mx-auto px-6 lg:px-10 xl:px-16 flex justify-between items-center py-[7px]">
-              <div className="flex items-center gap-1.5 text-white/40 text-[11px] font-medium">
+              <div className="flex items-center gap-1.5 text-white/50 text-[11px] font-medium">
                 <IconMapPin className="w-3 h-3 text-brand-secondary flex-shrink-0" />
-                <span>***</span>
+                <span>Unit No. 604, Tower B, Bhutani Alphathum, Sector 90, Noida, UP 201305</span>
               </div>
-              <div className="flex items-center gap-5 text-[11px] text-white/40">
-                <a href="tel:#"
-                  className="flex items-center gap-1.5 hover:text-brand-secondary transition-colors font-medium">
-                  <IconPhone className="w-3 h-3 text-brand-secondary" />
-                  ***
+              <div className="flex items-center gap-3 text-[11px] text-white/50">
+                <a href="mailto:hr@primehireminds.com"
+                  className="flex items-center gap-1 hover:text-brand-secondary transition-colors font-medium">
+                  <IconMail className="w-3 h-3 text-brand-secondary" />
+                  hr@primehireminds.com
                 </a>
                 <span className="w-px h-3 bg-white/12 inline-block" />
                 <a href="mailto:info@primehireminds.com"
-                  className="flex items-center gap-1.5 hover:text-brand-secondary transition-colors font-medium">
-                  <IconMail className="w-3 h-3 text-brand-secondary" />
+                  className="flex items-center gap-1 hover:text-brand-secondary transition-colors font-medium">
                   info@primehireminds.com
+                </a>
+                <span className="w-px h-3 bg-white/12 inline-block" />
+                <a href="mailto:support@primehireminds.com"
+                  className="flex items-center gap-1 hover:text-brand-secondary transition-colors font-medium">
+                  support@primehireminds.com
                 </a>
               </div>
             </div>
@@ -527,10 +531,10 @@ export default function Navbar() {
                   <IconPhoneCall className="w-4 h-4" />
                   Contact Us Now
                 </Link>
-                <a href="tel:#"
-                  className="flex items-center justify-center gap-2 text-brand-primary/45 text-sm hover:text-brand-primary transition-colors py-1 font-bold">
-                  <IconPhone className="w-3.5 h-3.5" />
-                  ***
+                <a href="mailto:info@primehireminds.com"
+                  className="flex items-center justify-center gap-2 text-brand-primary/60 text-xs hover:text-brand-primary transition-colors py-1 font-bold">
+                  <IconMail className="w-3.5 h-3.5 text-brand-secondary" />
+                  info@primehireminds.com
                 </a>
               </motion.div>
             </motion.aside>

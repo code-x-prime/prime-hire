@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import AnimatedButton from "./AnimatedButton";
-import { IconPhoneCall } from "@tabler/icons-react";
+import { IconMail } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
 interface CTASectionProps {
@@ -24,7 +24,6 @@ export default function CTASection({
   highlight = "Staffing Solutions?",
   description = "Partner with Prime Hire Minds Consulting to secure industry-leading talent and streamline operations — from executive search to complete HR setup.",
   primaryButton = { text: "Get Free Consultation", href: "/contact" },
-  phone = "***",
   mainImage = "/cta-main.jpg",
   mainImageAlt = "Prime Hire Minds Consulting",
   secondaryImage = "/cta-secondary.jpg",
@@ -117,8 +116,8 @@ export default function CTASection({
                 </AnimatedButton>
 
                 <a
-                  href={`tel:${phone.replace(/\s+/g, "")}`}
-                  className="group inline-flex items-center gap-2.5 text-sm font-bold text-brand-primary transition-all duration-300 hover:text-brand-secondary"
+                  href="mailto:info@primehireminds.com"
+                  className="group inline-flex items-center gap-2.5 text-xs font-bold text-brand-primary transition-all duration-300 hover:text-brand-secondary"
                 >
                   <span
                     className="inline-flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 group-hover:scale-110"
@@ -127,9 +126,9 @@ export default function CTASection({
                       border: "1px solid rgba(200,155,60,0.25)",
                     }}
                   >
-                    <IconPhoneCall className="w-4 h-4 text-brand-secondary" />
+                    <IconMail className="w-4 h-4 text-brand-secondary" />
                   </span>
-                  <span className="tracking-wide">{phone}</span>
+                  <span className="tracking-wide">info@primehireminds.com</span>
                 </a>
               </motion.div>
             </div>

@@ -157,7 +157,7 @@ export default function InternshipsPage() {
             </div>
 
             <div className="mt-10 pt-6 border-t border-brand-accent/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="text-xs text-brand-dark/50">Location: *** / Hybrid / Remote | Duration: 2–6 Months</p>
+              <p className="text-xs text-brand-dark/50">Location: Noida (UP) / Hybrid / Remote | Duration: 2–6 Months</p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-secondary transition-colors"
@@ -226,7 +226,7 @@ export default function InternshipsPage() {
             </div>
 
             <div className="mt-10 pt-6 border-t border-brand-accent/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-              <p className="text-xs text-brand-dark/50">Location: *** / Hybrid / Remote | Duration: 2–6 Months</p>
+              <p className="text-xs text-brand-dark/50">Location: Noida (UP) / Hybrid / Remote | Duration: 2–6 Months</p>
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-secondary transition-colors"

@@ -26,34 +26,40 @@ const contactFaqCategories = [
 ];
 
 const contactFaqs = [
-  { category: "contacting", question: "How can I reach Prime Hire Minds Consulting?", answer: "You can call us at ***, email info@primehireminds.com, or fill out the contact form on this page. You can also connect via LinkedIn or WhatsApp." },
+  { category: "contacting", question: "How can I reach Prime Hire Minds Consulting?", answer: "You can email us at hr@primehireminds.com, info@primehireminds.com, or support@primehireminds.com, or fill out the contact form on this page." },
   { category: "contacting", question: "What information should I provide in my enquiry?", answer: "For hiring enquiries, share your company name, role requirements, and timeline. For career services or internships, mention your background and the service you are interested in." },
-  { category: "response", question: "How quickly will you respond?", answer: "We aim to respond to all enquiries within 2 business hours during working days. Complex requirements may need a brief discovery call." },
+  { category: "response", question: "How quickly will you respond?", answer: "We aim to respond to all enquiries within 2 business hours during working days." },
   { category: "response", question: "What are your operating hours?", answer: "Our office hours are Monday to Friday, 9:00 AM to 6:30 PM, and Saturday, 9:00 AM to 2:00 PM." },
   { category: "services", question: "Can I enquire about multiple services?", answer: "Yes. Many clients use a combination of recruitment, RPO, and HR consulting. Let us know your full requirement and we will propose an integrated solution." },
   { category: "services", question: "Do you offer on-site consultations?", answer: "We offer both virtual and on-site consultations depending on the project scope and location." },
-  { category: "location", question: "Where is your office located?", answer: "Our corporate office is located at ***." },
-  { category: "location", question: "Do you serve clients outside Haryana?", answer: "Yes. We provide pan-India recruitment and HR consulting services across all major cities and industrial regions." },
+  { category: "location", question: "Where is your office located?", answer: "Our corporate office is located at Unit No. 604, 6th Floor, Tower B, Bhutani Alphathum, Sector 90, Noida, Uttar Pradesh 201305, India." },
+  { category: "location", question: "Do you serve clients outside Uttar Pradesh?", answer: "Yes. We provide pan-India recruitment and HR consulting services across all major cities and industrial regions." },
 ];
 
 const contactInfo = [
   {
     icon: IconMapPin,
     title: "Corporate Office",
-    lines: ["***"],
+    lines: ["Unit No. 604, 6th Floor, Tower B", "Bhutani Alphathum, Sector 90", "Noida, Uttar Pradesh 201305, India"],
     action: null,
   },
   {
-    icon: IconPhone,
-    title: "Phone",
-    lines: ["***"],
-    action: "tel:#",
+    icon: IconMail,
+    title: "HR & Recruitment",
+    lines: ["hr@primehireminds.com"],
+    action: "mailto:hr@primehireminds.com",
   },
   {
     icon: IconMail,
-    title: "Email Address",
+    title: "General Enquiries",
     lines: ["info@primehireminds.com"],
     action: "mailto:info@primehireminds.com",
+  },
+  {
+    icon: IconMail,
+    title: "Support & Help Desk",
+    lines: ["support@primehireminds.com"],
+    action: "mailto:support@primehireminds.com",
   },
   {
     icon: IconClock,
@@ -206,10 +212,10 @@ export default function ContactPage() {
         categories={contactFaqCategories}
         faqs={contactFaqs}
         contactCta={{
-          title: "Prefer to talk directly?",
-          description: "Call us at *** or email info@primehireminds.com for immediate assistance.",
-          buttonLabel: "Call Now",
-          href: "tel:#",
+          title: "Prefer to email directly?",
+          description: "Email hr@primehireminds.com, info@primehireminds.com, or support@primehireminds.com for immediate assistance.",
+          buttonLabel: "Email Us",
+          href: "mailto:info@primehireminds.com",
         }}
       />
 
