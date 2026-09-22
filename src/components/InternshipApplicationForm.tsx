@@ -1,54 +1,54 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   IconSend, IconCircleCheck, IconAlertCircle, IconLoader2,
-  IconUser, IconMail, IconPhone, IconChevronDown,
+  IconUser, IconMail, IconPhone, IconChevronDown, IconUpload, IconX,
 } from "@tabler/icons-react";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-const services = [
-  "Permanent Recruitment",
-  "Executive Search",
-  "Bulk and Volume Hiring",
-  "Recruitment Process Outsourcing (RPO)",
-  "Industry-Specific Hiring",
-  "Talent Mapping and Candidate Pipeline",
-  "Startup HR Setup",
-  "HR Operations Outsourcing",
-  "HR Policies and Documentation",
-  "Onboarding and Offboarding Solutions",
-  "Performance Management Solutions",
-  "Background Verification Coordination",
-  "HRMS Implementation Support",
-  "Payroll and Compliance Coordination",
-  "Employee Engagement Solutions",
-  "ATS-Friendly Resume Writing",
-  "LinkedIn Profile Optimisation",
-  "Interview Preparation",
-  "Career Consultation",
-  "Internship",
-  "Other",
+const MAX_SIZE = 8 * 1024 * 1024; // 8MB
+const ALLOWED_TYPES = [
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+const ALLOWED_EXT = [".pdf", ".doc", ".docx"];
+
+const internshipTypes = [
+  "HR Internship",
+  "Business Development Internship",
 ];
 
-/* ── Shared input class — sharp edges, consistent focus ── */
 const inputClass =
   "w-full bg-[#F8FAFC] border border-brand-accent/70 px-4 py-3 text-[0.88rem] text-brand-dark placeholder:text-brand-dark/28 outline-none transition-all duration-200 focus:bg-white focus:border-brand-primary/50 focus:shadow-[0_0_0_3px_rgba(11,44,95,0.06)] hover:border-brand-dark/20";
 
-export default function ContactForm() {
+export default function InternshipApplicationForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
-    name: "", email: "", phone: "", service: "", message: "",
+    name: "", email: "", phone: "", internshipType: "",
   });
+  const [resume, setResume] = useState<File | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const validate = () => {
     const e: Record<string, string> = {};
     if (!form.name.trim()) e.name = "Name is required";
     if (!form.email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) e.email = "Valid email required";
     if (form.phone && !form.phone.match(/^[+\d\s\-()]{7,}$/)) e.phone = "Valid phone number required";
-    if (!form.message.trim()) e.message = "Please describe your requirements";
+    if (!form.internshipType) e.internshipType = "Please select an internship type";
+    if (!resume) {
+      e.resume = "Resume is required";
+    } else {
+      const ext = resume.name.toLowerCase().slice(resume.name.lastIndexOf("."));
+      if (!ALLOWED_TYPES.includes(resume.type) && !ALLOWED_EXT.includes(ext)) {
+        e.resume = "Only PDF, DOC or DOCX files allowed";
+      } else if (resume.size > MAX_SIZE) {
+        e.resume = "Resume must be 8MB or smaller";
+      }
+    }
     return e;
   };
 
@@ -59,6 +59,17 @@ export default function ContactForm() {
     if (errors[key]) setErrors((er) => { const n = { ...er }; delete n[key]; return n; });
   };
 
+  const onFileChange = (ev: React.ChangeEvent<HTMLInputElement>) => {
+    const file = ev.target.files?.[0] || null;
+    setResume(file);
+    if (errors.resume) setErrors((er) => { const n = { ...er }; delete n.resume; return n; });
+  };
+
+  const clearFile = () => {
+    setResume(null);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const errs = validate();
@@ -67,37 +78,28 @@ export default function ContactForm() {
     setStatus("submitting");
 
     try {
-      const res = await fetch("/api/contact", {
+      const fd = new FormData();
+      fd.append("name", form.name);
+      fd.append("email", form.email);
+      fd.append("phone", form.phone);
+      fd.append("internshipType", form.internshipType);
+      if (resume) fd.append("resume", resume);
+
+      const res = await fetch("/api/internship-apply", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          subject: form.service ? `Service Inquiry: ${form.service}` : "General Inquiry",
-          message: form.message,
-        }),
+        body: fd,
       });
       const data = await res.json();
       if (data.success) {
         setStatus("success");
-        setForm({ name: "", email: "", phone: "", service: "", message: "" });
+        setForm({ name: "", email: "", phone: "", internshipType: "" });
+        clearFile();
         return;
       }
+      setStatus("error");
     } catch {
-      // API failed — fall through to mailto fallback so the enquiry is never lost
+      setStatus("error");
     }
-
-    // Fallback: open the user's default email client with a pre-filled message
-    const subject = encodeURIComponent(
-      form.service ? `Service Inquiry: ${form.service}` : "General Inquiry"
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone || "N/A"}\nService: ${form.service || "N/A"}\n\nMessage:\n${form.message}`
-    );
-    window.location.href = `mailto:info@primehireminds.com?subject=${subject}&body=${body}`;
-    setStatus("success");
-    setForm({ name: "", email: "", phone: "", service: "", message: "" });
   };
 
   /* ── Success ── */
@@ -123,23 +125,22 @@ export default function ContactForm() {
 
         <div className="flex items-center gap-3 mb-4 justify-center">
           <span className="w-5 h-[2px] bg-brand-secondary" />
-          <span className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-secondary">Message Sent</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.28em] text-brand-secondary">Application Sent</span>
           <span className="w-5 h-[2px] bg-brand-secondary" />
         </div>
 
         <h3 className="font-serif font-bold text-white text-2xl mb-3 leading-snug">
-          We&apos;ll Be In Touch Soon
+          Application Received
         </h3>
-        <p className="text-white/45 text-[0.88rem] leading-relaxed max-w-xs mb-10">
-          Our team responds within{" "}
-          <span className="text-brand-secondary font-bold">2 business hours</span>.
-          Thank you for reaching out.
+        <p className="text-white/45 text-[0.88rem] leading-relaxed max-w-sm mb-10">
+          Your resume has been submitted successfully. Our team will review it and get back to you within{" "}
+          <span className="text-brand-secondary font-bold">2–3 business days</span>.
         </p>
         <button
           onClick={() => setStatus("idle")}
           className="text-[10px] font-black uppercase tracking-[0.2em] text-white/30 hover:text-brand-secondary transition-colors duration-200"
         >
-          Send Another Message
+          Submit Another Application
         </button>
       </div>
     );
@@ -162,14 +163,14 @@ export default function ContactForm() {
         <div className="flex items-center gap-2.5 mb-2">
           <span className="w-5 h-[2px] bg-brand-secondary" />
           <span className="text-[10px] font-black tracking-[0.28em] uppercase text-brand-secondary">
-            Free Consultation
+            Internship Application
           </span>
         </div>
         <h3 className="font-serif font-bold text-brand-dark text-xl md:text-2xl leading-snug">
-          Send an Enquiry
+          Apply for an Internship
         </h3>
         <p className="text-brand-dark/38 text-[0.8rem] mt-1">
-          Typically replied within 2 business hours
+          Fill in your details and upload your resume (PDF/DOC, max 8MB)
         </p>
       </div>
 
@@ -218,41 +219,78 @@ export default function ContactForm() {
             <IconMail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-brand-dark/25 pointer-events-none" />
             <input
               type="email" value={form.email} onChange={set("email")}
-              placeholder="you@company.com"
+              placeholder="you@college.edu"
               className={`${inputClass} pl-9 ${errors.email ? "border-red-300 focus:border-red-400" : ""}`}
             />
           </div>
           {errors.email && <ErrorMsg msg={errors.email} />}
         </div>
 
-        {/* Service */}
+        {/* Internship Type */}
         <div>
           <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-brand-dark/38 mb-1.5">
-            Service Required
+            Internship Type <span className="text-brand-secondary">*</span>
           </label>
           <div className="relative">
             <select
-              value={form.service} onChange={set("service")}
-              className={`${inputClass} appearance-none cursor-pointer pr-9`}
+              value={form.internshipType} onChange={set("internshipType")}
+              className={`${inputClass} appearance-none cursor-pointer pr-9 ${errors.internshipType ? "border-red-300 focus:border-red-400" : ""}`}
             >
-              <option value="">Select a service...</option>
-              {services.map((s) => <option key={s} value={s}>{s}</option>)}
+              <option value="">Select internship type...</option>
+              {internshipTypes.map((t) => <option key={t} value={t}>{t}</option>)}
             </select>
             <IconChevronDown className="absolute right-3.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-brand-dark/28 pointer-events-none" />
           </div>
+          {errors.internshipType && <ErrorMsg msg={errors.internshipType} />}
         </div>
 
-        {/* Message */}
+        {/* Resume Upload */}
         <div>
           <label className="block text-[10px] font-black uppercase tracking-[0.2em] text-brand-dark/38 mb-1.5">
-            Your Message <span className="text-brand-secondary">*</span>
+            Upload Resume <span className="text-brand-secondary">*</span>
           </label>
-          <textarea
-            value={form.message} onChange={set("message")}
-            rows={4} placeholder="Describe your requirements, headcount, location..."
-            className={`${inputClass} resize-none ${errors.message ? "border-red-300 focus:border-red-400" : ""}`}
+
+          {!resume ? (
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className={`w-full flex flex-col items-center justify-center gap-2 px-4 py-7 border border-dashed cursor-pointer transition-all duration-200 bg-[#F8FAFC] hover:bg-white hover:border-brand-primary/40 ${errors.resume ? "border-red-300" : "border-brand-accent/70"}`}
+            >
+              <IconUpload className="w-5 h-5 text-brand-dark/30" />
+              <span className="text-[0.8rem] text-brand-dark/45">
+                Click to upload resume
+              </span>
+              <span className="text-[0.7rem] text-brand-dark/28">
+                PDF, DOC or DOCX · Max 8MB
+              </span>
+            </button>
+          ) : (
+            <div className="flex items-center justify-between gap-3 px-4 py-3.5 border border-brand-primary/30 bg-brand-primary/5">
+              <div className="flex items-center gap-3 min-w-0">
+                <IconUpload className="w-4 h-4 text-brand-primary flex-shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-[0.82rem] text-brand-dark font-medium truncate">{resume.name}</p>
+                  <p className="text-[0.7rem] text-brand-dark/45">{(resume.size / (1024 * 1024)).toFixed(2)} MB</p>
+                </div>
+              </div>
+              <button
+                type="button" onClick={clearFile}
+                className="p-1.5 hover:bg-red-50 text-brand-dark/40 hover:text-red-500 transition-colors flex-shrink-0"
+                aria-label="Remove resume"
+              >
+                <IconX className="w-4 h-4" />
+              </button>
+            </div>
+          )}
+
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            onChange={onFileChange}
+            className="hidden"
           />
-          {errors.message && <ErrorMsg msg={errors.message} />}
+          {errors.resume && <ErrorMsg msg={errors.resume} />}
         </div>
 
         {/* API error */}
@@ -260,7 +298,7 @@ export default function ContactForm() {
           <div className="flex items-center gap-2.5 px-4 py-3 border border-red-200 bg-red-50/60">
             <IconAlertCircle className="w-4 h-4 text-red-500 flex-shrink-0" />
             <p className="text-red-600 text-[0.82rem]">
-              Something went wrong. Please try again or call us directly.
+              Something went wrong. Please try again or email us directly.
             </p>
           </div>
         )}
@@ -278,10 +316,10 @@ export default function ContactForm() {
           <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/22 to-transparent" />
           {status === "submitting" ? (
             <><IconLoader2 className="w-4 h-4 animate-spin relative z-10" />
-              <span className="relative z-10">Sending...</span></>
+              <span className="relative z-10">Submitting...</span></>
           ) : (
             <><IconSend className="w-4 h-4 relative z-10" />
-              <span className="relative z-10">Send Enquiry</span></>
+              <span className="relative z-10">Submit Application</span></>
           )}
         </button>
 

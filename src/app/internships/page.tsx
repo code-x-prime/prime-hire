@@ -1,6 +1,7 @@
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import MinimalHero from "@/components/MinimalHero";
+import InternshipApplicationForm from "@/components/InternshipApplicationForm";
 import Link from "next/link";
 import {
   IconCircleCheck,
@@ -54,7 +55,7 @@ const internshipFaqs = [
   { category: "hr-internship", question: "Who can apply for the HR internship?", answer: "Students, fresh graduates, and aspiring HR professionals who want practical exposure to real-world HR processes are welcome to apply." },
   { category: "bd-internship", question: "What will I learn in the Business Development internship?", answer: "You will learn lead generation, LinkedIn prospecting, email and telephone outreach, client database development, service pitching, proposal preparation, and sales pipeline tracking." },
   { category: "bd-internship", question: "Is the BD internship sales-focused?", answer: "Yes. It is designed for individuals interested in B2B sales, client acquisition, and business growth in the HR and recruitment industry." },
-  { category: "application", question: "How do I apply for an internship?", answer: "You can apply through our Contact page by selecting Internship Enquiry. Shortlisted candidates are contacted for a brief discussion before onboarding." },
+  { category: "application", question: "How do I apply for an internship?", answer: "Fill out the application form on this page: select your internship type (HR or Business Development), enter your details, and upload your resume (PDF/DOC, max 8MB). Your resume reaches our team directly by email. Shortlisted candidates are contacted for a brief discussion before onboarding." },
   { category: "application", question: "What is the internship duration?", answer: "Internships typically run for 2 to 6 months, depending on the program and your availability." },
   { category: "stipend", question: "Is the internship paid?", answer: "Yes. We offer performance-based stipends for both HR and Business Development internships, with additional incentives for BD interns who convert clients." },
   { category: "stipend", question: "Will I receive a certificate?", answer: "Yes. All interns receive an internship completion certificate, and deserving interns may also receive a letter of recommendation." },
@@ -94,14 +95,14 @@ export default function InternshipsPage() {
         title={<>Training &amp; Paid<br /><span>Internship Programs</span></>}
         subtitle="Gain real-world experience, practical industry exposure, stipends, and mentorship from corporate professionals."
         ctaText="Apply For Internship"
-        ctaHref="#apply-internship"
+        ctaHref="#application-form"
         tag="For Aspiring Professionals"
         heading="Paid HR & Business Development Internships"
         desc="Hands-on training, live projects, certificates, and potential job opportunities based on performance."
       />
 
       {/* PROGRAM 1: HR INTERNSHIP */}
-      <section id="apply-internship" className="py-16 md:py-24 bg-white relative">
+      <section className="py-16 md:py-24 bg-white relative">
         <div className="max-w-7xl mx-auto px-5 md:px-10 xl:px-16">
           <div className="border border-brand-accent/70 p-8 md:p-12 bg-gradient-to-br from-white to-slate-50 relative shadow-md">
             <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 border-b border-brand-accent/60 pb-6">
@@ -159,7 +160,7 @@ export default function InternshipsPage() {
             <div className="mt-10 pt-6 border-t border-brand-accent/60 flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-xs text-brand-dark/50">Location: Noida (UP) / Hybrid / Remote | Duration: 2–6 Months</p>
               <Link
-                href="/contact"
+                href="#application-form"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-secondary transition-colors"
               >
                 Apply for HR Internship <IconArrowRight className="w-4 h-4" />
@@ -228,12 +229,33 @@ export default function InternshipsPage() {
             <div className="mt-10 pt-6 border-t border-brand-accent/60 flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-xs text-brand-dark/50">Location: Noida (UP) / Hybrid / Remote | Duration: 2–6 Months</p>
               <Link
-                href="/contact"
+                href="#application-form"
                 className="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-primary text-white text-xs font-bold uppercase tracking-wider hover:bg-brand-secondary transition-colors"
               >
                 Apply for BD Internship <IconArrowRight className="w-4 h-4" />
               </Link>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ════ APPLICATION FORM ════ */}
+      <section id="application-form" className="py-16 md:py-24 bg-white relative border-t border-brand-accent/60 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-5 md:px-10 xl:px-16">
+          <div className="text-center max-w-2xl mx-auto mb-10 md:mb-14">
+            <span className="inline-block px-3 py-1 bg-brand-secondary/10 text-brand-dark text-xs font-bold uppercase tracking-wider mb-4">
+              Application Form
+            </span>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold text-brand-dark mb-4">
+              Apply for an <span className="text-brand-secondary">Internship</span>
+            </h2>
+            <p className="text-brand-dark/60 text-base leading-relaxed">
+              One form, all details. Choose your internship type, share your information, and upload your resume — it reaches our team directly by email.
+            </p>
+          </div>
+
+          <div className="max-w-2xl mx-auto">
+            <InternshipApplicationForm />
           </div>
         </div>
       </section>
@@ -248,7 +270,7 @@ export default function InternshipsPage() {
           title: "Ready to apply?",
           description: "Submit your application and start your hands-on learning journey with Prime Hire Minds.",
           buttonLabel: "Apply Now",
-          href: "/contact",
+          href: "#application-form",
         }}
       />
 
@@ -257,7 +279,7 @@ export default function InternshipsPage() {
         title="Start Your Professional Journey"
         highlight="With a Paid Internship"
         description="Gain hands-on experience in HR or Business Development, earn a performance-based stipend, and receive a completion certificate that sets you apart."
-        primaryButton={{ text: "Apply Now", href: "/contact" }}
+        primaryButton={{ text: "Apply Now", href: "#application-form" }}
       />
     </>
   );
